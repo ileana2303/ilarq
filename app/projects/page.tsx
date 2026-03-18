@@ -1,48 +1,12 @@
 import Sidebar from "@/components/Sidebar";
 import ProjectCard from "@/components/project-card";
+import { projects as projectLibrary } from "@/lib/projects";
 
-const projects = [
-  {
-    image: "/images/projects/AZ/IMG-8516.png",
-    title: "Featured Project",
-    href: "/projects/1",
-  },
-  {
-    image: "/images/projects/olvos/1.jpg",
-    title: "Project One",
-    href: "/projects/1",
-  },
-  {
-    image: "/images/projects/olvos/2.jpg",
-    title: "Project Two",
-    href: "/projects/1",
-  },
-  {
-    image: "/images/projects/olvos/3.jpg",
-    title: "Project Three",
-    href: "/projects/1",
-  },
-  {
-    image: "/images/projects/olvos/3.jpg",
-    title: "Project Three",
-    href: "/projects/3",
-  },
-  {
-    image: "/images/projects/olvos/3.jpg",
-    title: "Project Three",
-    href: "/projects/3",
-  },
-  {
-    image: "/images/projects/olvos/1.jpg",
-    title: "Project Three",
-    href: "/projects/3",
-  },
-  {
-    image: "/images/projects/olvos/4.jpg",
-    title: "Project Four",
-    href: "/projects/4",
-  },
-];
+const projects = projectLibrary.map((project) => ({
+  image: project.previewImage,
+  title: project.title,
+  href: project.href,
+}));
 
 export default function Projects() {
   return (

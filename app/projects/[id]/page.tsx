@@ -39,7 +39,7 @@ export default async function Project({
             </div>
 
             <footer className="flex h-14 items-center justify-end border-t bg-background px-10 text-[14px] text-foreground/60">
-                <p>Cookies policy | Privacy policy | Website by Join</p>
+                <p>Website by Ilokan</p>
             </footer>
         </div>
     );

@@ -1,8 +1,12 @@
+import Link from "next/link";
+
 export default function Sidebar() {
   return (
     <aside className="flex h-full w-[340px] shrink-0 flex-col justify-between overflow-hidden border-r bg-background px-12 py-16 text-foreground/70">
       <div>
-        <h1 className="mb-20 text-[16px] font-medium tracking-[0.06em]">ILARQ STUDIO</h1>
+        <h1 className="mb-20 text-[16px] font-medium tracking-[0.06em]">
+          <Link href="/">ILARQ STUDIO</Link>
+        </h1>
         <nav className="space-y-4 text-[16px] leading-none">
           <a className="block" href="/projects">PROJECTS</a>
           <a className="block" href="/projects">ON SITE</a>
