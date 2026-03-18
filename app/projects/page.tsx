@@ -5,51 +5,51 @@ const projects = [
   {
     image: "/images/projects/AZ/IMG-8516.png",
     title: "Featured Project",
-    href: "/project/1",
+    href: "/projects/1",
   },
   {
     image: "/images/projects/olvos/1.jpg",
     title: "Project One",
-    href: "/project/1",
+    href: "/projects/1",
   },
   {
     image: "/images/projects/olvos/2.jpg",
     title: "Project Two",
-    href: "/project/2",
+    href: "/projects/1",
   },
   {
     image: "/images/projects/olvos/3.jpg",
     title: "Project Three",
-    href: "/project/3",
+    href: "/projects/1",
   },
   {
     image: "/images/projects/olvos/3.jpg",
     title: "Project Three",
-    href: "/project/3",
+    href: "/projects/3",
   },
   {
     image: "/images/projects/olvos/3.jpg",
     title: "Project Three",
-    href: "/project/3",
+    href: "/projects/3",
   },
   {
     image: "/images/projects/olvos/1.jpg",
     title: "Project Three",
-    href: "/project/3",
+    href: "/projects/3",
   },
   {
     image: "/images/projects/olvos/4.jpg",
     title: "Project Four",
-    href: "/project/4",
+    href: "/projects/4",
   },
 ];
 
 export default function Projects() {
   return (
-    <div className="flex">
+    <div className="flex h-screen overflow-hidden">
       <Sidebar />
 
-      <main className="flex-1 p-6 space-y-6">
+      <main className="min-h-0 flex-1 overflow-y-auto p-6 space-y-6">
         {(() => {
           const rows: Array<{ featured: (typeof projects)[number]; others: Array<(typeof projects)[number]> }> = [];
 

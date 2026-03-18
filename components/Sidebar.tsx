@@ -1,17 +1,21 @@
 export default function Sidebar() {
   return (
-    <aside className="w-[260px] h-screen border-r p-6 flex flex-col justify-between">
+    <aside className="flex h-full w-[340px] shrink-0 flex-col justify-between overflow-hidden border-r bg-background px-12 py-16 text-foreground/70">
       <div>
-        <h1 className="font-semibold mb-8">ILARQ STUDIO</h1>
-        <nav className="space-y-3 text-sm">
-          <a href="/">WHO WE ARE</a>
-          <a href="/">MODUS VIVENDI</a>
-          <a href="/projects">PROJECTS</a>
-          <a href="/">PRESS</a>
-          <a href="/">CONTACT</a>
+        <h1 className="mb-20 text-[16px] font-medium tracking-[0.06em]">ILARQ STUDIO</h1>
+        <nav className="space-y-4 text-[16px] leading-none">
+          <a className="block" href="/projects">PROJECTS</a>
+          <a className="block" href="/projects">ON SITE</a>
+          <a className="block" href="/">CONTACT</a>
         </nav>
       </div>
-      <div className="text-xs">Instagram<br/>Pinterest</div>
+
+      <div className="pt-8 text-[15px]">
+        <div className="space-y-2">
+          <a className="block" href="https://www.instagram.com/ilarq_studio/">Instagram</a>
+          <a className="block" href="https://es.pinterest.com/ilarqstudio/">Pinterest</a>
+        </div>
+      </div>
     </aside>
   );
 }
