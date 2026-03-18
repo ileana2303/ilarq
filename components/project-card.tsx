@@ -20,12 +20,10 @@ export default function ProjectCard({ image, title, href }: Props) {
         transition={{ duration: 0.6, ease: "easeOut" }}
       />
 
-      {/* subtle overlay */}
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-500" />
+      <div className="absolute inset-0 bg-black/10 transition duration-500 sm:bg-black/0 sm:group-hover:bg-black/10" />
 
-      {/* optional text */}
       {title && (
-        <div className="absolute bottom-4 left-4 text-white text-sm opacity-0 group-hover:opacity-100 transition duration-500">
+        <div className="absolute bottom-4 left-4 pr-4 text-xs text-white transition duration-500 sm:text-sm sm:opacity-0 sm:group-hover:opacity-100">
           {title}
         </div>
       )}

@@ -22,7 +22,13 @@ export default function ProjectSlider({ projectId }: Props) {
 
         const getSlideWidth = () => {
             const firstSlide = container.querySelector<HTMLElement>("[data-slide]");
-            return firstSlide ? firstSlide.offsetWidth + 32 : 0;
+
+            if (!firstSlide) {
+                return 0;
+            }
+
+            const gap = Number.parseFloat(window.getComputedStyle(container).columnGap || "0");
+            return firstSlide.offsetWidth + gap;
         };
 
         const updateActiveIndex = () => {
@@ -63,23 +69,23 @@ export default function ProjectSlider({ projectId }: Props) {
 
     if (!project || slides.length === 0) {
         return (
-            <div className="grid h-full place-items-center">
+            <div className="grid h-full min-h-[50svh] place-items-center lg:min-h-0">
                 <p className="text-sm uppercase tracking-[0.3em]">No slides available.</p>
             </div>
         );
     }
 
     return (
-        <section className="relative h-full text-white">
+        <section className="relative h-full min-h-[50svh] text-white lg:min-h-0">
             <div
                 ref={containerRef}
-                className="flex h-full items-center gap-6 overflow-x-auto overflow-y-hidden px-0 py-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                className="flex h-full items-center gap-4 overflow-x-auto overflow-y-hidden px-0 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:py-6"
             >
                 {slides.map((src, index) => (
                     <figure
                         key={src}
                         data-slide
-                        className="relative h-full min-w-[92%] overflow-hidden border-y first:border-l last:border-r"
+                        className="relative h-full min-w-full overflow-hidden border-y sm:min-w-[82%] lg:min-w-[92%] xl:min-w-[86%]"
                     >
                         <img
                             src={src}
@@ -90,7 +96,7 @@ export default function ProjectSlider({ projectId }: Props) {
                 ))}
             </div>
 
-            <div className="pointer-events-none absolute bottom-8 right-8 flex items-end justify-end text-xs uppercase tracking-[0.3em] text-white/80">
+            <div className="pointer-events-none absolute bottom-5 right-5 flex items-end justify-end text-[11px] uppercase tracking-[0.3em] text-white/80 sm:bottom-8 sm:right-8 sm:text-xs">
                 <p>
                     {String(activeIndex + 1).padStart(2, "0")} /{" "}
                     {String(slides.length).padStart(2, "0")}
