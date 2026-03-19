@@ -85,7 +85,7 @@ export default function ProjectSlider({ projectId }: Props) {
                     <figure
                         key={src}
                         data-slide
-                        className="relative h-full min-w-full overflow-hidden border-y sm:min-w-[82%] lg:min-w-[92%] xl:min-w-[86%]"
+                        className="relative h-full min-w-full overflow-hidden border-y sm:min-w-[82%] lg:min-w-[92%] xl:min-w-[60%]"
                     >
                         <img
                             src={src}

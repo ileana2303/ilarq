@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const images = projects.map((project) => ({
     src: project.previewImage,
     href: project.href,
+    title: project.title,
 }));
 
 export default function ImageLoop() {
@@ -23,7 +24,7 @@ export default function ImageLoop() {
     }, []);
 
     return (
-        <div className="relative w-full h-full overflow-hidden">
+        <div className="relative h-full min-h-[420px] w-full overflow-hidden lg:min-h-0">
             <Link
                 href={currentImage.href}
                 className="block h-full w-full cursor-pointer"
@@ -33,7 +34,7 @@ export default function ImageLoop() {
                     <motion.img
                         key={index}
                         src={currentImage.src}
-                        alt=""
+                        alt={currentImage.title}
                         className="absolute h-full w-full object-cover"
                         initial={{ opacity: 0, scale: 1.05 }}
                         animate={{ opacity: 1, scale: 1 }}

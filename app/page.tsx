@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background lg:h-screen lg:flex-row lg:overflow-hidden">
       <Sidebar />
 
-      <main className="flex-1 min-h-[calc(100svh-4.5rem)] lg:min-h-0">
+      <main className="min-h-0 flex-1">
         <ImageLoop />
       </main>
     </div>
