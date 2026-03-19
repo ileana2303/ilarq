@@ -7,20 +7,18 @@ export type Project = {
 };
 
 const azSlides = [
-    "/images/projects/AZ/1.jpg",
+    "/images/projects/AZ/1.JPG",
     "/images/projects/AZ/2.JPG",
-    "/images/projects/AZ/3.JPG",
     "/images/projects/AZ/4.JPG",
-    "/images/projects/AZ/5.JPG",
-    "/images/projects/AZ/6.jpg",
-    "/images/projects/AZ/7.jpg",
+    "/images/projects/AZ/6.JPG",
+    "/images/projects/AZ/7.JPG",
     "/images/projects/AZ/8.JPG",
     "/images/projects/AZ/9.JPG",
     "/images/projects/AZ/10.JPG",
-    "/images/projects/AZ/11.jpg",
-    "/images/projects/AZ/12.jpg",
-    "/images/projects/AZ/13.JPG",
-    "/images/projects/AZ/14.JPG",
+    "/images/projects/AZ/11.JPG",
+    "/images/projects/AZ/12.JPG",
+    "/images/projects/AZ/13.jpg",
+    "/images/projects/AZ/14.jpg",
 ];
 
 const olvosSlides = [
@@ -61,37 +59,37 @@ const hainanSlides = [
 
 export const projects: Project[] = [
     {
-        id: "1",
-        title: "AZ Residence . Athens",
-        href: "/projects/1",
+        id: "San Cinturón",
+        title: "AZ64 Residence . Athens",
+        href: "/projects/San Cinturón",
         previewImage: "/images/projects/AZ/1.jpg",
         slides: azSlides,
     },
     {
-        id: "2",
+        id: "Olvos",
         title: "Olvos Hotel . Koufonisi",
-        href: "/projects/2",
+        href: "/projects/Olvos",
         previewImage: "/images/projects/olvos/1.jpg",
         slides: olvosSlides,
     },
     {
-        id: "3",
+        id: "Politeia",
         title: "Politeia Private Residence . Athens",
-        href: "/projects/3",
+        href: "/projects/Politeia",
         previewImage: "/images/projects/politeia/1.jpg",
         slides: politeiaSlides,
     },
     {
-        id: "4",
+        id: "Punta",
         title: "Island House . Paros",
-        href: "/projects/4",
+        href: "/projects/Punta",
         previewImage: "/images/projects/lokossa/1.jpg",
         slides: lokossaSlides,
     },
     {
-        id: "5",
+        id: "Tanpopo",
         title: "University . China",
-        href: "/projects/5",
+        href: "/projects/Tanpopo",
         previewImage: "/images/projects/HAINAN/1.jpg",
         slides: hainanSlides,
     }
