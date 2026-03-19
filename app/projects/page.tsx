@@ -1,9 +1,10 @@
 import Sidebar from "@/components/Sidebar";
-import ProjectCard from "@/components/project-card";
+import MediaCard from "@/components/media-card";
 import { projects as projectLibrary } from "@/lib/projects";
 
 const projects = projectLibrary.map((project) => ({
-  image: project.previewImage,
+  src: project.previewImage,
+  type: "image" as const,
   title: project.title,
   href: project.href,
 }));
@@ -27,8 +28,9 @@ export default function Projects() {
           return rows.map((row, rowIndex) => (
             <div key={rowIndex} className="space-y-4 sm:space-y-6 lg:space-y-8">
               <div className="h-[58svh] min-h-[320px] sm:h-[68svh] md:h-[72svh] lg:h-[90vh] lg:min-h-[420px]">
-                <ProjectCard
-                  image={row.featured.image}
+                <MediaCard
+                  src={row.featured.src}
+                  type={row.featured.type}
                   title={row.featured.title}
                   href={row.featured.href}
                 />
@@ -40,8 +42,9 @@ export default function Projects() {
                     key={`${project.href}-${idx}`}
                     className="h-[34svh] min-h-[240px] sm:h-[40svh] md:h-[44svh] lg:h-[60vh] lg:min-h-[260px]"
                   >
-                    <ProjectCard
-                      image={project.image}
+                    <MediaCard
+                      src={project.src}
+                      type={project.type}
                       title={project.title}
                       href={project.href}
                     />

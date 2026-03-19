@@ -14,7 +14,7 @@ import {
 
 const navigationLinks = [
   { href: "/projects", label: "PROJECTS" },
-  { href: "/projects", label: "ON SITE" },
+  { href: "/on-site", label: "ON SITE" },
   { href: "/", label: "CONTACT" },
 ];
 
@@ -56,7 +56,7 @@ function SiteLinks() {
 export default function Sidebar() {
   return (
     <>
-      <header className="sticky top-0 z-40 flex items-center justify-between border-b bg-background/95 px-5 py-4 text-foreground/70 backdrop-blur-sm lg:hidden">
+      <header className="sticky top-0 z-40 flex items-center justify-between border-b bg-background/95 px-5 py-4 text-foreground/70 lg:hidden">
         <Link
           href="/"
           className="text-[15px] font-medium tracking-[0.06em] sm:text-[16px]"
@@ -94,7 +94,7 @@ export default function Sidebar() {
         </Sheet>
       </header>
 
-      <aside className="hidden h-screen w-[280px] shrink-0 flex-col justify-between overflow-hidden border-r bg-background px-8 py-10 text-foreground/70 lg:flex xl:w-[340px] xl:px-12 xl:py-16">
+      <aside className="hidden h-screen w-[280px] shrink-0 flex-col justify-between overflow-hidden bg-background px-8 py-10 text-foreground/70 lg:flex xl:w-[340px] xl:px-12 xl:py-16">
         <SiteLinks />
       </aside>
     </>

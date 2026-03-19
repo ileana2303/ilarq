@@ -7,11 +7,9 @@ export type Project = {
 };
 
 const azSlides = [
-    "/images/projects/AZ/1.JPG",
+    "/images/projects/AZ/1.jpg",
     "/images/projects/AZ/2.JPG",
-    "/images/projects/AZ/3.JPG",
     "/images/projects/AZ/4.JPG",
-    "/images/projects/AZ/5.JPG",
     "/images/projects/AZ/6.JPG",
     "/images/projects/AZ/7.JPG",
     "/images/projects/AZ/8.JPG",
@@ -22,6 +20,14 @@ const azSlides = [
     "/images/projects/AZ/13.jpg",
     "/images/projects/AZ/14.jpg",
     "/images/projects/AZ/15.JPG",
+    "/images/projects/AZ/16-web.jpg",
+    "/images/projects/AZ/17-web.jpg",
+    "/images/projects/AZ/18-web.jpg",
+    "/images/projects/AZ/19.jpg",
+    "/images/projects/AZ/20.jpg",
+    "/images/projects/AZ/21-web.jpg",
+    "/images/projects/AZ/22-web.jpg",
+    "/images/projects/AZ/IMG_4622.JPG",
 ];
 
 const olvosSlides = [
@@ -65,7 +71,7 @@ export const projects: Project[] = [
         id: "1",
         title: "AZ Residence . Athens",
         href: "/projects/1",
-        previewImage: "/images/projects/AZ/5.JPG",
+        previewImage: "/images/projects/AZ/1.jpg",
         slides: azSlides,
     },
     {
