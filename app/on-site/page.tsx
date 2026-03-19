@@ -6,48 +6,27 @@ import MediaCard from "@/components/media-card";
 
 const imageExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const videoExtensions = new Set([".mp4", ".m4v", ".mov", ".webm"]);
-const compatibleSuffix = "-web";
 
 const onSiteDirectory = path.join(process.cwd(), "public/images/on-site");
 
-const supportedFiles = readdirSync(onSiteDirectory).filter((fileName) => {
+const onSiteMedia = readdirSync(onSiteDirectory)
+  .filter((fileName) => {
     if (fileName.startsWith(".")) {
       return false;
     }
 
     const extension = path.extname(fileName).toLowerCase();
-    return imageExtensions.has(extension) || videoExtensions.has(extension);
-  });
-
-const supportedFileSet = new Set(supportedFiles);
-
-function getPreferredFileName(fileName: string) {
-  const { name, ext } = path.parse(fileName);
-  const extension = ext.toLowerCase();
-  const preferredExtensions = imageExtensions.has(extension)
-    ? [".jpg", ".jpeg", ".png", ".webp"]
-    : [".mp4", ".m4v", ".mov", ".webm"];
-
-  for (const preferredExtension of preferredExtensions) {
-    const candidate = `${name}${compatibleSuffix}${preferredExtension}`;
-
-    if (supportedFileSet.has(candidate)) {
-      return candidate;
-    }
-  }
-
-  return fileName;
-}
-
-const onSiteMedia = supportedFiles
-  .filter((fileName) => !path.parse(fileName).name.endsWith(compatibleSuffix))
+    return (
+      (imageExtensions.has(extension) || videoExtensions.has(extension)) &&
+      !path.parse(fileName).name.endsWith("-web")
+    );
+  })
   .sort((left, right) => left.localeCompare(right, undefined, { numeric: true }))
   .map((fileName, index) => {
-    const preferredFileName = getPreferredFileName(fileName);
-    const extension = path.extname(preferredFileName).toLowerCase();
+    const extension = path.extname(fileName).toLowerCase();
 
     return {
-      src: `/images/on-site/${preferredFileName}`,
+      src: `/images/on-site/${fileName}`,
       title: `ON SITE ${String(index + 1).padStart(2, "0")}`,
       type: videoExtensions.has(extension) ? ("video" as const) : ("image" as const),
     };

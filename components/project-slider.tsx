@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { getProjectById } from "@/lib/projects";
 
@@ -87,10 +88,12 @@ export default function ProjectSlider({ projectId }: Props) {
                         data-slide
                         className="relative h-full min-w-full overflow-hidden border-y sm:min-w-[82%] lg:min-w-[92%] xl:min-w-[60%]"
                     >
-                        <img
+                        <Image
                             src={src}
                             alt={`${project.title} image ${index + 1}`}
-                            className="h-full w-full object-cover"
+                            fill
+                            sizes="(min-width: 1280px) 60vw, (min-width: 1024px) 92vw, (min-width: 640px) 82vw, 100vw"
+                            className="object-cover"
                         />
                     </figure>
                 ))}
