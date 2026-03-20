@@ -10,6 +10,7 @@ type MediaCardProps = {
   type: "image" | "video";
   href?: string;
   hideOnError?: boolean;
+  showTitle?: boolean;
 };
 
 const tileClassName = "group relative block h-full overflow-hidden";
@@ -19,6 +20,7 @@ function MediaContents({
   title,
   type,
   onMediaError,
+  showTitle,
 }: Omit<MediaCardProps, "href" | "hideOnError"> & {
   onMediaError?: () => void;
 }) {
@@ -50,7 +52,7 @@ function MediaContents({
 
       <div className="absolute inset-0 bg-black/10 transition duration-500 sm:bg-black/0 sm:group-hover:bg-black/10" />
 
-      {title && (
+      {showTitle && title && (
         <div className="absolute bottom-4 left-4 pr-4 text-xs text-white transition duration-500 sm:text-sm sm:opacity-0 sm:group-hover:opacity-100">
           {title}
         </div>
@@ -59,7 +61,14 @@ function MediaContents({
   );
 }
 
-export default function MediaCard({ src, title, type, href, hideOnError = false }: MediaCardProps) {
+export default function MediaCard({
+  src,
+  title,
+  type,
+  href,
+  hideOnError = false,
+  showTitle = true,
+}: MediaCardProps) {
   const [hasError, setHasError] = useState(false);
 
   if (hideOnError && hasError) {
@@ -71,14 +80,26 @@ export default function MediaCard({ src, title, type, href, hideOnError = false 
   if (href) {
     return (
       <Link href={href} className={tileClassName}>
-        <MediaContents src={src} title={title} type={type} onMediaError={handleMediaError} />
+        <MediaContents
+          src={src}
+          title={title}
+          type={type}
+          onMediaError={handleMediaError}
+          showTitle={showTitle}
+        />
       </Link>
     );
   }
 
   return (
     <div className={tileClassName}>
-      <MediaContents src={src} title={title} type={type} onMediaError={handleMediaError} />
+      <MediaContents
+        src={src}
+        title={title}
+        type={type}
+        onMediaError={handleMediaError}
+        showTitle={showTitle}
+      />
     </div>
   );
 }
