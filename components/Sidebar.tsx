@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -81,7 +82,14 @@ export default function Sidebar() {
             className="w-[min(88vw,360px)] border-r px-0"
             showCloseButton
           >
-            <SheetHeader className="px-6 pb-0 pt-6">
+            <SheetHeader className="flex-row items-center gap-3 px-6 pb-0 pt-6">
+              <Image
+                src="/images/logo.png"
+                alt="ILARQ STUDIO Logo"
+                width={50}
+                height={50}
+                className="h-auto w-auto shrink-0"
+              />
               <SheetTitle className="text-[15px] uppercase tracking-[0.06em] text-foreground/70">
                 ILARQ STUDIO
               </SheetTitle>
@@ -96,6 +104,13 @@ export default function Sidebar() {
 
       <aside className="hidden h-screen w-[280px] shrink-0 flex-col justify-between overflow-hidden bg-background px-8 py-10 text-foreground/70 lg:flex xl:w-[340px] xl:px-12 xl:py-16">
         <SiteLinks />
+        <Image
+          src="/images/logo.png"
+          alt="ILARQ STUDIO Logo"
+          width={50}
+          height={50}
+          className="mt-12 w-auto self-start"
+        />
       </aside>
     </>
   );
