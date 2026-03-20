@@ -9,7 +9,6 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -26,7 +25,7 @@ const socialLinks = [
 
 function SiteLinks() {
   return (
-    <>
+    <div className="space-y-12 sm:space-y-16">
       <div>
         <h1 className="mb-12 text-[15px] font-medium tracking-[0.06em] sm:mb-16 sm:text-[16px]">
           <Link href="/">ILARQ STUDIO</Link>
@@ -41,7 +40,7 @@ function SiteLinks() {
         </nav>
       </div>
 
-      <div className="pt-8 text-[14px] sm:text-[15px]">
+      <div className="text-[14px] sm:text-[15px]">
         <div className="space-y-2">
           {socialLinks.map((link) => (
             <a key={link.label} className="block" href={link.href}>
@@ -50,14 +49,14 @@ function SiteLinks() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
 export default function Sidebar() {
   return (
     <>
-      <header className="sticky top-0 z-40 flex items-center justify-between border-b bg-background/95 px-5 py-4 text-foreground/70 lg:hidden">
+      <header className="sticky top-0 z-40 flex items-center justify-between border-b bg-background px-5 py-4 text-foreground/70 shadow-[0_1px_0_hsl(var(--border))] lg:hidden">
         <Link
           href="/"
           className="text-[15px] font-medium tracking-[0.06em] sm:text-[16px]"
@@ -90,9 +89,6 @@ export default function Sidebar() {
                 height={50}
                 className="h-auto w-auto shrink-0"
               />
-              <SheetTitle className="text-[15px] uppercase tracking-[0.06em] text-foreground/70">
-                ILARQ STUDIO
-              </SheetTitle>
             </SheetHeader>
 
             <div className="flex flex-1 flex-col justify-between px-6 pb-8 pt-10 text-foreground/70">
@@ -106,7 +102,7 @@ export default function Sidebar() {
         <SiteLinks />
         <Image
           src="/images/logo.png"
-          alt="ILARQ STUDIO Logo"
+          alt="ILARQ STUDIO"
           width={50}
           height={50}
           className="mt-12 w-auto self-start"

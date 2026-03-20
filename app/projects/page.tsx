@@ -14,7 +14,7 @@ export default function Projects() {
     <div className="flex min-h-screen flex-col bg-background lg:h-screen lg:flex-row lg:overflow-hidden">
       <Sidebar />
 
-      <main className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4 sm:space-y-6 sm:p-6 lg:space-y-8 lg:p-8">
+      <main className="flex-1 space-y-4 p-4 sm:space-y-6 sm:p-6 lg:min-h-0 lg:overflow-y-auto lg:space-y-8 lg:p-8">
         {(() => {
           const rows: Array<{ featured: (typeof projects)[number]; others: Array<(typeof projects)[number]> }> = [];
 

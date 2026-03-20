@@ -49,7 +49,7 @@ export default function OnSitePage() {
     <div className="flex min-h-screen flex-col bg-background lg:h-screen lg:flex-row lg:overflow-hidden">
       <Sidebar />
 
-      <main className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4 sm:space-y-6 sm:p-6 lg:space-y-8 lg:p-8">
+      <main className="flex-1 space-y-4 p-4 sm:space-y-6 sm:p-6 lg:min-h-0 lg:overflow-y-auto lg:space-y-8 lg:p-8">
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="space-y-4 sm:space-y-6 lg:space-y-8">
             <div className="h-[58svh] min-h-[320px] sm:h-[68svh] md:h-[72svh] lg:h-[90vh] lg:min-h-[420px]">
