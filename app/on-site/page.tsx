@@ -9,33 +9,42 @@ const videoExtensions = new Set([".mp4", ".m4v", ".mov", ".webm"]);
 
 const onSiteDirectory = path.join(process.cwd(), "public/images/on-site");
 
-const onSiteMedia = readdirSync(onSiteDirectory)
-  .filter((fileName) => {
-    if (fileName.startsWith(".")) {
-      return false;
-    }
+type OnSiteMediaItem = {
+  src: string;
+  title: string;
+  type: "image" | "video";
+};
 
-    const extension = path.extname(fileName).toLowerCase();
-    return (
-      (imageExtensions.has(extension) || videoExtensions.has(extension)) &&
-      !path.parse(fileName).name.endsWith("-web")
-    );
-  })
-  .sort((left, right) => left.localeCompare(right, undefined, { numeric: true }))
-  .map((fileName, index) => {
-    const extension = path.extname(fileName).toLowerCase();
+function getOnSiteMedia(): OnSiteMediaItem[] {
+  return readdirSync(onSiteDirectory)
+    .filter((fileName) => {
+      if (fileName.startsWith(".")) {
+        return false;
+      }
 
-    return {
-      src: `/images/on-site/${fileName}`,
-      title: `ON SITE ${String(index + 1).padStart(2, "0")}`,
-      type: videoExtensions.has(extension) ? ("video" as const) : ("image" as const),
-    };
-  });
+      const extension = path.extname(fileName).toLowerCase();
+      return (
+        (imageExtensions.has(extension) || videoExtensions.has(extension)) &&
+        !path.parse(fileName).name.endsWith("-web")
+      );
+    })
+    .sort((left, right) => left.localeCompare(right, undefined, { numeric: true }))
+    .map((fileName, index) => {
+      const extension = path.extname(fileName).toLowerCase();
+
+      return {
+        src: `/images/on-site/${fileName}`,
+        title: `ON SITE ${String(index + 1).padStart(2, "0")}`,
+        type: videoExtensions.has(extension) ? "video" : "image",
+      };
+    });
+}
 
 export default function OnSitePage() {
+  const onSiteMedia = getOnSiteMedia();
   const rows: Array<{
-    featured: (typeof onSiteMedia)[number];
-    others: Array<(typeof onSiteMedia)[number]>;
+    featured: OnSiteMediaItem;
+    others: OnSiteMediaItem[];
   }> = [];
 
   for (let i = 0; i < onSiteMedia.length; i += 3) {
