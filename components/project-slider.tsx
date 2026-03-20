@@ -12,6 +12,12 @@ export default function ProjectSlider({ projectId }: Props) {
     const slides = project?.slides ?? [];
     const containerRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [failedSlides, setFailedSlides] = useState<string[]>([]);
+    const visibleSlides = slides.filter((src) => !failedSlides.includes(src));
+
+    useEffect(() => {
+        setFailedSlides([]);
+    }, [projectId]);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -64,9 +70,9 @@ export default function ProjectSlider({ projectId }: Props) {
             container.removeEventListener("scroll", updateActiveIndex);
             container.removeEventListener("wheel", handleWheel);
         };
-    }, [projectId, slides.length]);
+    }, [projectId, visibleSlides.length]);
 
-    if (!project || slides.length === 0) {
+    if (!project || visibleSlides.length === 0) {
         return (
             <div className="grid h-full min-h-[50svh] place-items-center lg:min-h-0">
                 <p className="text-sm uppercase tracking-[0.3em]">No slides available.</p>
@@ -80,7 +86,7 @@ export default function ProjectSlider({ projectId }: Props) {
                 ref={containerRef}
                 className="flex h-full items-center gap-4 overflow-x-auto overflow-y-hidden px-0 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:py-6"
             >
-                {slides.map((src, index) => (
+                {visibleSlides.map((src) => (
                     <figure
                         key={src}
                         data-slide
@@ -88,10 +94,16 @@ export default function ProjectSlider({ projectId }: Props) {
                     >
                         <img
                             src={src}
-                            alt={`${project.title} image ${index + 1}`}
+                            alt=""
                             className="absolute inset-0 h-full w-full object-cover"
                             decoding="async"
                             draggable={false}
+                            onError={(event) => {
+                                event.currentTarget.style.display = "none";
+                                setFailedSlides((current) =>
+                                    current.includes(src) ? current : [...current, src]
+                                );
+                            }}
                         />
                     </figure>
                 ))}
@@ -100,7 +112,7 @@ export default function ProjectSlider({ projectId }: Props) {
             <div className="pointer-events-none absolute bottom-5 right-5 flex items-end justify-end text-[11px] uppercase tracking-[0.3em] text-white/80 sm:bottom-8 sm:right-8 sm:text-xs">
                 <p>
                     {String(activeIndex + 1).padStart(2, "0")} /{" "}
-                    {String(slides.length).padStart(2, "0")}
+                    {String(visibleSlides.length).padStart(2, "0")}
                 </p>
             </div>
         </section>

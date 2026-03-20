@@ -57,6 +57,7 @@ export default function OnSitePage() {
                 src={row.featured.src}
                 title={row.featured.title}
                 type={row.featured.type}
+                hideOnError
               />
             </div>
 
@@ -70,6 +71,7 @@ export default function OnSitePage() {
                     src={media.src}
                     title={media.title}
                     type={media.type}
+                    hideOnError
                   />
                 </div>
               ))}
