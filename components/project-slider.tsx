@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { getProjectById } from "@/lib/projects";
 
@@ -21,30 +20,29 @@ export default function ProjectSlider({ projectId }: Props) {
             return;
         }
 
-        const getSlideWidth = () => {
-            const firstSlide = container.querySelector<HTMLElement>("[data-slide]");
-
-            if (!firstSlide) {
-                return 0;
-            }
-
-            const gap = Number.parseFloat(window.getComputedStyle(container).columnGap || "0");
-            return firstSlide.offsetWidth + gap;
-        };
+        const getSlides = () => Array.from(container.querySelectorAll<HTMLElement>("[data-slide]"));
 
         const updateActiveIndex = () => {
-            const slideWidth = getSlideWidth();
+            const slideElements = getSlides();
 
-            if (slideWidth <= 0) {
+            if (slideElements.length === 0) {
                 return;
             }
 
-            setActiveIndex(
-                Math.min(
-                    slides.length - 1,
-                    Math.max(0, Math.round(container.scrollLeft / slideWidth))
-                )
-            );
+            const scrollLeft = container.scrollLeft;
+            let closestIndex = 0;
+            let closestDistance = Number.POSITIVE_INFINITY;
+
+            slideElements.forEach((slide, index) => {
+                const distance = Math.abs(slide.offsetLeft - scrollLeft);
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+            });
+
+            setActiveIndex(closestIndex);
         };
 
         const handleWheel = (event: WheelEvent) => {
@@ -86,14 +84,14 @@ export default function ProjectSlider({ projectId }: Props) {
                     <figure
                         key={src}
                         data-slide
-                        className="relative h-full min-w-full overflow-hidden border-y sm:min-w-[82%] lg:min-w-[92%] xl:min-w-[60%]"
+                        className="relative h-full min-w-full overflow-hidden sm:min-w-[82%] lg:min-w-[92%] xl:min-w-[60%]"
                     >
-                        <Image
+                        <img
                             src={src}
                             alt={`${project.title} image ${index + 1}`}
-                            fill
-                            sizes="(min-width: 1280px) 60vw, (min-width: 1024px) 92vw, (min-width: 640px) 82vw, 100vw"
-                            className="object-cover"
+                            className="absolute inset-0 h-full w-full object-cover"
+                            decoding="async"
+                            draggable={false}
                         />
                     </figure>
                 ))}
