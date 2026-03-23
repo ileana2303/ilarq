@@ -48,7 +48,7 @@ export const projects: Project[] = [
   {
     id: "San-Cinturón",
     title: "San Cinturón Residence . Athens",
-    previewImage: "/images/projects/AZ/1.jpg",
+    previewImage: "/images/projects/AZ/preview.jpg",
     href: "/projects/San-Cinturón",
     slides: [
       "/images/projects/AZ/1.jpg",
